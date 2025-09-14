@@ -1,0 +1,7 @@
+Flask
+Flask-SQLAlchemy
+Flask-JWT-Extended
+requests
+psycopg2-binary
+Flask-Limiter
+Flask-Caching
