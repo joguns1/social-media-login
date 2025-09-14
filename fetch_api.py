@@ -2,7 +2,6 @@ import requests
 from app import app, db
 from models import CovidStat
 
-# Example COVID-19 API (Global summary + per country data)
 API_URL = "https://api.covid19api.com/summary"
 
 def fetch_and_store_covid_data():
@@ -11,7 +10,7 @@ def fetch_and_store_covid_data():
         response.raise_for_status()
         data = response.json()
 
-        # Validate expected structure
+
         if "Countries" not in data:
             raise ValueError("Invalid API response: 'Countries' key missing")
 
@@ -19,7 +18,6 @@ def fetch_and_store_covid_data():
 
         with app.app_context():
             for entry in countries:
-                # Validate required fields
                 country = entry.get("Country")
                 confirmed = entry.get("TotalConfirmed")
                 deaths = entry.get("TotalDeaths")

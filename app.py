@@ -10,14 +10,12 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 
-# Initialize Flask app
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# Database
 db.init_app(app)
 
-# JWT
+
 app.config["JWT_SECRET_KEY"] = os.environ.get("JWT_SECRET_KEY", "dev-jwt-secret")
 jwt = JWTManager(app)
 
@@ -36,7 +34,6 @@ def home():
     """
 
 
-# Fetch & save COVID-19 data from external API
 @app.route("/covid/fetch", methods=["GET"])
 def fetch_covid_data():
     url = "https://disease.sh/v3/covid-19/countries/USA"
